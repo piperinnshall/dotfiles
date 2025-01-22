@@ -10,10 +10,12 @@ alias fdir "cd (fzf --preview='bat --style=numbers --color=always {}' --walker=d
 
 set -x PATH /Users/piperinnshall/Developer/scripts/* $PATH
 
-set -x PATH /Users/piperinnshall/Developer/src/godot/bin $PATH
-set -x PATH /Users/piperinnshall/Developer/src/aseprite/build/bin $PATH
+for dir in (find /Users/piperinnshall/Developer/src -type d -name 'bin')
+    set -x PATH $PATH $dir
+end
 
 set -x GPG_TTY (tty)
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+thefuck --alias | source
